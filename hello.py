@@ -1,9 +1,14 @@
-from flask import Flask
-from flask import request
+from flask import Flask, request, render_template
+from flask_bootstrap import Bootstrap
+
 
 app = Flask(__name__)
+bootstrap = Bootstrap(app)
 
 @app.route('/')
 def index():
-    user_agent = request.headers.get('User-Agent')
-    return '<h1>Hello, world.</h1><p>Your browser is {}</p>'.format(user_agent)
+    return render_template('index.html')
+
+@app.route('/user/<name>')
+def user(name):
+    return render_template('user.html', name=name)
