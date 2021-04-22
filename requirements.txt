@@ -1,0 +1,7 @@
+flask
+sqlalchemy
+flask-bootstrap
+flask-moment
+flask-appconfig
+flask-moment
+flask-wtf

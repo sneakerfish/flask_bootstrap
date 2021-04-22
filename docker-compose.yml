@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    links:
+      - "db:dbserver"
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+      - "9992:8000"
+    env_file:
+      - database-variables.env
+  db:
+    image: postgres
+    restart: always
+    shm_size: '2gb'
+    volumes:
+      - ./db:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    env_file:
+      - database-variables.env
